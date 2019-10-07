@@ -15,7 +15,7 @@
 
 #### Stage goals
 
-The main goal of this stage is to prepare an initial proposal on:
+The main goal of this stage is to prepare an initial proposal on:
 
 1.  Modules that the application should consist of
 2.  Communication between modules
@@ -37,7 +37,7 @@ When performing software design activities for this project, please, keep in min
 3. No CSS pre/post processing 
 4. No adaptive optimizations required
 
-####Dataset management requirements and contsraints
+#### Dataset management requirements and contsraints
 
 1. User should be able to:
 
