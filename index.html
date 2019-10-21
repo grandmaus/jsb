@@ -7,31 +7,11 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="container">
-    <div class="dataset-manager">
-      <form action="" class="dataset-form">
-        <label for="datsetX" class="dataset-form__label">X</label>
-        <input type="number" class="dataset-form__input" id="datsetX">
-        <label for="datsetY" class="dataset-form__label">Y</label>
-        <input type="number" class="dataset-form__input" id="datsetY">
-        <button class="dataset-form__add">Add</button>
-      </form>
-
-      <div class="dataset-output">
-        <table class="dataset-output__table">
-          <thead>
-            <tr>
-              <th>X</th>
-              <th>Y</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody id="datasetBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  <div class="container" id="app"></div>
   <script src="js/stateManager.js"></script>
-  <script src="js/dataSet.js"></script>
+  <script src="js/dataset/datasetCommonView.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/dataset/datasetController.js"></script>
+  <script src="js/dataset/datasetView.js"></script>
 </body>
 </html>

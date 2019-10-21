@@ -1,30 +1,19 @@
-const data = {
-  x: [],
-  y: []
-};
-
-class DatasetController {
+class DatasetView {
   constructor() {
     this.container = document.querySelector('#datasetBody');
     this.form = document.querySelector('.dataset-form');
-    this.fieldX = this.form.querySelector('#datsetX');
-    this.fieldY = this.form.querySelector('#datsetY');
-    this.buttonAdd = document.querySelector('.dataset-form__add');
-    this.render = this.render.bind(this);
+    this.fieldX = this.form.querySelector('#datasetX');
+    this.fieldY = this.form.querySelector('#datasetY');
+    this.buttonAdd = this.form.querySelector('.dataset-form__add');
+    this.render = this.render.bind(this)
   };
-
-  setValue(e) {
-    e.preventDefault();
-    if(this.fieldX.value !== '' && this.fieldY.value !== '') {
-      state.setData(this.fieldX.value, this.fieldY.value);
-    }
-  };
-
-
 
   deleteRow(e) {
-    e.target.parentNode.parentNode.remove();
-  }
+    const target = e.target;
+    const rowIndex = target.closest('tr').rowIndex - 1;
+    target.closest('tr').remove();
+    stateManager.globalState.splice(rowIndex, 1);
+  };
 
   render() {
     const fragment = document.createDocumentFragment();
@@ -37,8 +26,11 @@ class DatasetController {
     buttonDelete.setAttribute('type', 'button');
     cellButton.addEventListener('click', this.deleteRow);
     buttonDelete.textContent = 'Delete';
-    cellX.textContent = data.x[data.x.length - 1];
-    cellY.textContent = data.y[data.y.length - 1];
+
+    stateManager.globalState.map(item => {
+      cellX.textContent = item.x;
+      cellY.textContent = item.y;
+    });
 
     cellButton.appendChild(buttonDelete);
     row.appendChild(cellX);
@@ -50,11 +42,14 @@ class DatasetController {
   };
 
   init() {
-    this.buttonAdd.addEventListener('click', (e) => this.setValue(e));
+    stateManager.subscribe(this.render);
+    this.buttonAdd.addEventListener('click', (e) => {
+      e.preventDefault();
+      datasetController.setValue(this.fieldX.value, this.fieldY.value);
+    });
   };
 }
 
-const dataset = new DatasetController();
-const state = new stateManager(data, dataset.render);
+const datasetView = new DatasetView();
 
-dataset.init();
+datasetView.init();
