@@ -1,16 +1,19 @@
-class DatasetController {
+import { validatePattern } from '../utils.js';
+
+export default class DatasetController {
   constructor(stateManager) {
-    this.localState = [];
     this.stateManager = stateManager;
+    this.localState = [...stateManager.state];
+    this.isValid = true;
   };
 
   setValue(x, y) {
-    if(x.value !== '' && y.value !== '') {
-      this.localState.push({x, y})
+    if(validatePattern.test(x) && validatePattern.test(y)) {
+      this.localState.push({x, y});
+      this.stateManager.update(this.localState);
+      this.isValid = true;
+    } else {
+      this.isValid = false;
     }
-    this.stateManager.update(this.localState);
   };
 }
-
-const stateManager = new StateManager();
-const datasetController = new DatasetController(stateManager);

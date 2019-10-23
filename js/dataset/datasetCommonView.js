@@ -1,4 +1,4 @@
-class DatasetCommonView {
+export default class DatasetCommonView {
   template = `
     <div class="dataset-manager">
       <form action="" class="dataset-form">
