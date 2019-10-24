@@ -1,9 +1,9 @@
 export default class StateManager {
   constructor() {
     this.observers = [];
+    this._state = [];
   };
 
-  #state = [];
 
   subscribe(fn) {
     this.observers.push(fn);
@@ -14,13 +14,13 @@ export default class StateManager {
   };
 
   get state() {
-    return this.#state;
+    return this._state;
   };
 
   update(newState) {
-    if(JSON.stringify(this.#state) !== JSON.stringify(newState)) {
-      this.#state = [...newState];
-      this.observers.forEach(subscriber => subscriber(this.#state));
+    if(JSON.stringify(this._state) !== JSON.stringify(newState)) {
+      this._state = [...newState];
+      this.observers.forEach(subscriber => subscriber(this._state));
     }
   };
 }
