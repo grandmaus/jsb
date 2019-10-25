@@ -2,10 +2,14 @@ export default class DatasetCommonView {
   template = `
     <div class="dataset-manager">
       <form action="" class="dataset-form">
-        <label for="datasetX" class="dataset-form__label">X</label>
-        <input type="number" class="dataset-form__input" id="datasetX">
-        <label for="datasetY" class="dataset-form__label">Y</label>
-        <input type="number" class="dataset-form__input" id="datasetY">
+        <div class="dataset-form__inner">
+            <label for="datasetX" class="dataset-form__label">X:</label>
+            <input type="number" class="dataset-form__input" id="datasetX">
+          </div>
+        <div class="dataset-form__inner">
+          <label for="datasetY" class="dataset-form__label">Y:</label>
+          <input type="number" class="dataset-form__input" id="datasetY">
+        </div>
         <button class="dataset-form__add">Add</button>
       </form>
   

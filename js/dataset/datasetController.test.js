@@ -4,7 +4,6 @@ import StateManager from "../stateManager.js";
 const stateManagerInstance = new StateManager();
 const controllerInstance = new DatasetController(stateManagerInstance);
 
-
 describe('DatasetController', () => {
   test('x not valid. isValid equals false', () => {
     controllerInstance.setValue('abc', '2');

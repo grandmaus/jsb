@@ -37,8 +37,9 @@ export default class DatasetView {
       const buttonDelete = document.createElement('button');
 
       buttonDelete.setAttribute('type', 'button');
-      cellButton.addEventListener('click', this.deleteRow);
+      buttonDelete.addEventListener('click', this.deleteRow);
       buttonDelete.textContent = 'Delete';
+      buttonDelete.classList.add('dataset-output__delete');
       cellX.textContent = item.x;
       cellY.textContent = item.y;
 
@@ -62,6 +63,9 @@ export default class DatasetView {
       if(datasetController.isValid) {
         this.fieldX.value = '';
         this.fieldY.value = '';
+        this.form.classList.remove('invalid');
+      } else {
+        this.form.classList.add('invalid');
       }
     });
   };

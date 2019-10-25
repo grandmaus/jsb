@@ -4,7 +4,6 @@ export default class StateManager {
     this._state = [];
   };
 
-
   subscribe(fn) {
     this.observers.push(fn);
   };
