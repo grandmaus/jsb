@@ -31,7 +31,7 @@
   border-color: rgba(0, 0, 0, .2);
 }
 
-.dataset-form__add {
+.button {
   width: 100%;
   padding: 5px;
   border: 2px solid rgba(0, 0, 0, .5);
@@ -39,8 +39,17 @@
   text-transform: uppercase;
 }
 
-.dataset-form__add:hover {
+.button:hover {
   border-color: rgba(0, 0, 0, .2);
+}
+
+.button--red {
+  margin-top: 20px;
+  border: 2px solid rgba(255, 0, 0, .5);
+}
+
+.button--red:hover {
+  border-color: rgba(255, 0, 0, .2);
 }
 
 .dataset-output {
@@ -99,4 +108,12 @@
 
 .invalid .dataset-form__input {
   border-color: #ff0000;
+}
+
+.dataset-output__clear {
+  display: none;
+}
+
+.dataset-output__clear--show {
+  display: block;
 }

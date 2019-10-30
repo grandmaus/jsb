@@ -1,5 +1,5 @@
-export default class DatasetCommonView {
-  template = `
+export const getDatasetTemplate = () => {
+  return  `
     <div class="dataset-manager">
       <form action="" class="dataset-form">
         <div class="dataset-form__inner">
@@ -10,7 +10,7 @@ export default class DatasetCommonView {
           <label for="datasetY" class="dataset-form__label">Y:</label>
           <input type="number" class="dataset-form__input" id="datasetY">
         </div>
-        <button class="dataset-form__add">Add</button>
+        <button class="dataset-form__add button">Add</button>
       </form>
   
       <div class="dataset-output">
@@ -24,11 +24,8 @@ export default class DatasetCommonView {
           </thead>
           <tbody id="datasetBody"></tbody>
         </table>
+        <button class="dataset-output__clear button button--red">Clear All</button>
       </div>
     </div>
   `;
-
-  render(target) {
-    document.querySelector(target).insertAdjacentHTML('beforeend', this.template);
-  };
-}
+};

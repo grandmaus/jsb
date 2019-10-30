@@ -1,31 +1,37 @@
 import DatasetController from './datasetController.js';
-import StateManager from "../stateManager.js";
 
-const stateManagerInstance = new StateManager();
-const controllerInstance = new DatasetController(stateManagerInstance);
+const controllerInstance = new DatasetController();
 
 describe('DatasetController', () => {
-  test('x not valid. isValid equals false', () => {
-    controllerInstance.setValue('abc', '2');
-    expect(stateManagerInstance.state).toStrictEqual([]);
-    expect(controllerInstance.isValid).toBe(false)
+  test('should reject a promise and set isValid as false', (done) => {
+    controllerInstance.setValue('abc', '2').catch((error) => {
+      expect(error).toMatch('Invalid');
+      expect(controllerInstance.isValid).toBe(false);
+      done();
+    });
   });
 
-  test('y not valid. isValid equals false', () => {
-    controllerInstance.setValue('1', '222');
-    expect(stateManagerInstance.state).toStrictEqual([]);
-    expect(controllerInstance.isValid).toBe(false)
+  test('should reject a promise and set isValid as false', (done) => {
+    controllerInstance.setValue('1', 'abc').catch((error) => {
+      expect(error).toMatch('Invalid');
+      expect(controllerInstance.isValid).toBe(false);
+      done();
+    });
   });
 
-  test('x and y are not valid. isValid equals false', () => {
-    controllerInstance.setValue('123', '321');
-    expect(stateManagerInstance.state).toStrictEqual([]);
-    expect(controllerInstance.isValid).toBe(false)
+  test('should reject a promise and set isValid as false', (done) => {
+    controllerInstance.setValue('abc', '').catch((error) => {
+      expect(error).toMatch('Invalid');
+      expect(controllerInstance.isValid).toBe(false);
+      done();
+    });
   });
 
-  test('x and y are valid. isValid equals true', () => {
-    controllerInstance.setValue('1', '2');
-    expect(stateManagerInstance.state).toStrictEqual([{x: '1', y: '2'}]);
-    expect(controllerInstance.isValid).toBe(true)
+  test('should resolve a promise and set isValid as true', (done) => {
+    controllerInstance.setValue('1', '2').then((data) => {
+      expect(data).toStrictEqual([{x: '1', y: '2'}]);
+      expect(controllerInstance.isValid).toBe(true);
+      done();
+    });
   });
 });
