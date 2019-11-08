@@ -22,10 +22,10 @@ export default class DatasetController {
   };
 
   deleteValue(index, count) {
-    model.data.splice(index, count);
+    model.deleteValue(index, count);
   }
 
   clearData() {
-    model.data = [];
+    model.clearData();
   }
 }
