@@ -1,0 +1,119 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px 0;
+}
+
+.dataset-manager {
+  max-width: 400px;
+}
+
+.dataset-form__inner {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.dataset-form__label {
+  position: absolute;
+  left: 5px;
+  bottom: 2px;
+}
+
+.dataset-form__input {
+  width: 100%;
+  padding: 10px 0 1px 20px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, .5);
+}
+
+.dataset-form__input:hover {
+  border-color: rgba(0, 0, 0, .2);
+}
+
+.button {
+  width: 100%;
+  padding: 5px;
+  border: 2px solid rgba(0, 0, 0, .5);
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  border-color: rgba(0, 0, 0, .2);
+}
+
+.button--red {
+  margin-top: 20px;
+  border: 2px solid rgba(255, 0, 0, .5);
+}
+
+.button--red:hover {
+  border-color: rgba(255, 0, 0, .2);
+}
+
+.dataset-output {
+  margin-top: 20px;
+}
+
+.dataset-output__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataset-output__table th {
+  width: 30%;
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
+}
+
+.dataset-output__table td {
+  padding: 5px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
+}
+
+.dataset-output__delete {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  border: none;
+  background-color: transparent;
+  transition: transform .3s;
+}
+
+.dataset-output__delete:hover {
+  transform: rotate(90deg);
+}
+
+.dataset-output__delete::before,
+.dataset-output__delete::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 2px;
+  height: 100%;
+  background-color: #ff0000;
+}
+
+.dataset-output__delete::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.dataset-output__delete::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.invalid .dataset-form__input {
+  border-color: #ff0000;
+}
+
+.dataset-output__clear {
+  display: none;
+}
+
+.dataset-output__clear--show {
+  display: block;
+}
