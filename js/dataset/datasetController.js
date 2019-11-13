@@ -26,9 +26,11 @@ export default class DatasetController {
 
   deleteValue(index, count) {
     model.deleteValue(index, count);
+    ChartView.drawPoints(model.getData());
   }
 
   clearData() {
     model.clearData();
+    ChartView.drawPoints(model.getData());
   }
 }
