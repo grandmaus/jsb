@@ -40,6 +40,11 @@ export default class ChartView {
     const fragment = document.createDocumentFragment();
     const markerContainer = document.querySelector('.chart__markers');
     const pointContainer = document.querySelector('.chart__points');
+    const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    polyline.setAttribute('fill', 'none');
+    polyline.setAttribute('stroke', '#0ade0a');
+    polyline.setAttribute('points', '');
+
     const chartSize = 500;
     const dataMax = Math.max.apply(Math, data.reduce((result, item) => result.concat(Object.values(item)), [0]));
     const scaleCoefficient = chartSize / dataMax;
@@ -65,12 +70,18 @@ export default class ChartView {
     clearContainer(markerContainer);
 
     const points = data.reduce((result, item) => {
+      const valueX = item.x * scaleCoefficient;
+      const valueY = chartSize - item.y * scaleCoefficient;
+      const coordinates = polyline.getAttribute('points') + `${valueX},${valueY} `;
       const point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      point.setAttribute('fill', 'green');
-      point.setAttribute('cx', `${item.x * scaleCoefficient}`);
-      point.setAttribute('cy', `${chartSize - item.y * scaleCoefficient}`);
+      point.setAttribute('fill', '#0ade0a');
+      point.setAttribute('stroke', 'none');
+      point.setAttribute('cx', `${valueX}`);
+      point.setAttribute('cy', `${valueY}`);
       point.setAttribute('r', '5');
+      polyline.setAttribute('points', coordinates);
       result.appendChild(point);
+      result.appendChild(polyline);
 
       return result;
     }, fragment);
