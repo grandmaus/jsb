@@ -1,5 +1,7 @@
-import DatasetModel from "./datasetModel.js";
+import DatasetModel from './datasetModel.js';
 import { validatePattern } from '../utils.js';
+
+import ChartView from '../chart/ChartView.js';
 
 const model = new DatasetModel();
 
@@ -14,6 +16,7 @@ export default class DatasetController {
         model.setData(x, y);
         this.isValid = true;
         resolve(model.data);
+        ChartView.drawPoints(model.getData());
       } else {
         this.isValid = false;
         reject('Invalid');
@@ -23,9 +26,11 @@ export default class DatasetController {
 
   deleteValue(index, count) {
     model.deleteValue(index, count);
+    ChartView.drawPoints(model.getData());
   }
 
   clearData() {
     model.clearData();
+    ChartView.drawPoints(model.getData());
   }
 }

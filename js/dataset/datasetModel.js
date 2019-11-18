@@ -14,4 +14,8 @@ export default class DatasetModel {
   clearData() {
     this.data = [];
   }
+
+  getData() {
+    return this.data;
+  }
 }
